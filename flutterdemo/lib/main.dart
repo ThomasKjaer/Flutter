@@ -50,7 +50,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  //int _counter = 0;
+  int _menuIndex = 0;
+  final List<Widget> _menuItems = [
+    Text('Arne'),
+    Text('Bjarne'),
+    Text('Carsten')
+  ];
 
   void _incrementCounter() {
     setState(() {
@@ -59,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      //_counter++;
     });
   }
 
@@ -77,7 +83,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: _menuItems[_menuIndex],
+      /*Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -106,12 +113,27 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
+      ),*/
+      /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
+      ),*/
+      backgroundColor: Colors.amber,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTabTapped,
+        currentIndex: _menuIndex,
+        items: [
+          BottomNavigationBarItem(icon: new Icon(Icons.home), label: 'Arne'),
+          BottomNavigationBarItem(icon: new Icon(Icons.edit), label: 'Edit'),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _menuIndex = index;
+    });
   }
 }
