@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'textform.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,11 +53,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //int _counter = 0;
   int _menuIndex = 0;
-  final List<Widget> _menuItems = [
-    Text('Arne'),
-    Text('Bjarne'),
-    Text('Carsten')
-  ];
+  final List<Widget> _menuItems = [Text('Arne'), TextForm(), Text('Carsten')];
 
   void _incrementCounter() {
     setState(() {
